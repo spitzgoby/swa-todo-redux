@@ -1,4 +1,6 @@
 import Checkbox from '@material-ui/core/Checkbox';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,7 +18,12 @@ const TodoItem = (props) => {
         {todo.description}
       </TableCell>
       <TableCell>
-        {todo.dueBy}
+        {todo.dueBy.format('MMM DD hh:mm')}
+      </TableCell>
+      <TableCell>
+        <IconButton color="secondary">
+          <DeleteIcon />
+        </IconButton>
       </TableCell>
     </TableRow>
   );
@@ -26,7 +33,7 @@ TodoItem.propTypes = {
   todo: PropTypes.shape({
     completed: PropTypes.bool,
     description: PropTypes.string,
-    dueBy: PropTypes.string
+    dueBy: PropTypes.object
   })
 };
 

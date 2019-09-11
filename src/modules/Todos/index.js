@@ -1,7 +1,14 @@
-import {types} from './types'
+import moment from 'moment';
+import {types} from './types';
+import uuid from 'uuid';
 
 const initialState = {
-  todos: []
+  todos: [{
+    completed: false,
+    description: 'Finish todo app',
+    dueBy: moment().add(1, 'hour').startOf('hour'),
+    id: uuid()
+  }]
 };
 
 

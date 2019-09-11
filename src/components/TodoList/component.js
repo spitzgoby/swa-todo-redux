@@ -5,6 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TodoForm from '../TodoForm';
 import TodoItem from '../TodoItem';
 
 export default (props) => {
@@ -21,12 +22,14 @@ export default (props) => {
           <TableCell>
             Due By
           </TableCell>
+          <TableCell />
         </TableRow>
       </TableHead>
       <TableBody>
-        {props.todos.map(todo => <TodoItem todo={todo} />)}
+        {props.todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
       </TableBody>
       <TableFooter>
+        <TodoForm />
       </TableFooter>
     </Table>
   );
