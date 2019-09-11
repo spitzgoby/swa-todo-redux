@@ -22,3 +22,5 @@ export default (state = initialState, action) => {
 
   return newState;
 };
+
+export const getTodos = (state) => state.todos;
