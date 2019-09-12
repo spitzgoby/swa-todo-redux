@@ -6,8 +6,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TodoForm from '../TodoForm';
-import TodoItem from '../TodoItem';
+import TodoForm from 'components/TodoForm';
+import TodoItem from 'components/TodoItem';
 
 const TodoList = (props) => {
   return (

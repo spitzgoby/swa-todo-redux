@@ -1,5 +1,5 @@
-import todosReducer from './Todos'
+import todosReducer from 'modules/Todos'
 
-export * from './Todos';
+export * from 'modules/Todos';
 
 export default todosReducer;

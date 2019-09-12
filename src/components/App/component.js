@@ -1,5 +1,5 @@
 import Container from '@material-ui/core/Container';
-import TodoList from '../TodoList';
+import TodoList from 'components/TodoList';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 

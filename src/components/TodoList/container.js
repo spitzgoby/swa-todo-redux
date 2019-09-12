@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getTodos} from '../../modules/Todos'
+import {getTodos} from 'modules/Todos'
 import TodoList from './component';
 
 const mapStateToProps = (state) => ({
