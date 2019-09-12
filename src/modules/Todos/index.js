@@ -2,6 +2,15 @@ import moment from 'moment';
 import {types} from './types';
 import uuid from 'uuid';
 
+const createNewTodo = (payload) => {
+  return {
+    completed: false,
+    description: payload.description,
+    dueBy: moment(payload.dueBy),
+    id: uuid()
+  };
+};
+
 const initialState = {
   todos: [{
     completed: false,
@@ -18,7 +27,7 @@ export default (state = initialState, action) => {
     case types.ADD_TODO:
       newState = {
         ...state,
-        todos: state.todos.concat([action.payload])
+        todos: state.todos.concat([createNewTodo(action.payload)])
       };
       break;
 
@@ -30,3 +39,4 @@ export default (state = initialState, action) => {
 };
 
 export const getTodos = (state) => state.todos;
+export * from './actions';

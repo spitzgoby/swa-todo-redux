@@ -1,3 +1,3 @@
-import TodoForm from './component';
+import TodoForm from './container';
 
 export default TodoForm;
