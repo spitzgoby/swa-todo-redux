@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Table from '@material-ui/core/Table';
@@ -9,30 +10,46 @@ import TableRow from '@material-ui/core/TableRow';
 import TodoForm from 'components/TodoForm';
 import TodoItem from 'components/TodoItem';
 
+import './style.scss';
+
 const TodoList = (props) => {
+
+  const getClearTodosButtonProps = () => {
+    return {
+      className: 'todo-list--clear-todos-button',
+      onClick: () => {},
+      variant: 'contained'
+    };
+  };
+
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>
-            Completed
-          </TableCell>
-          <TableCell>
-            Description
-          </TableCell>
-          <TableCell>
-            Due By
-          </TableCell>
-          <TableCell />
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {props.todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
-      </TableBody>
-      <TableFooter>
-        <TodoForm />
-      </TableFooter>
-    </Table>
+    <div className="todo-list">
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>
+              Completed
+            </TableCell>
+            <TableCell>
+              Description
+            </TableCell>
+            <TableCell>
+              Due By
+            </TableCell>
+            <TableCell />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {props.todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
+        </TableBody>
+        <TableFooter>
+          <TodoForm />
+        </TableFooter>
+      </Table>
+      <Button {...getClearTodosButtonProps()}>
+        Clear Completed Todos
+      </Button>
+    </div>
   );
 };
 

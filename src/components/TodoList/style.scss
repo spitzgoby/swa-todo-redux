@@ -1,3 +1,6 @@
 .todo-list {
-
+  &--clear-todos-button {
+    float: right;
+    margin: 16px !important;
+  }
 }
