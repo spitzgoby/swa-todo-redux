@@ -2,6 +2,13 @@
 
 A simple todo app using Redux
 
+## Installation
+1. Clone this repo
+2. Run `yarn install`
+3. Run `yarn start`
+
+I built this using `node: 12.10.0` and `npm: 6.10.3`
+
 ## Introduction
 * Redux fundamentals
 * Redux dev tools
