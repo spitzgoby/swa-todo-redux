@@ -5,12 +5,16 @@
   "dependencies": {
     "@material-ui/core": "^4.4.1",
     "@material-ui/icons": "^4.4.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-scripts": "3.1.1",
+    "react-test-renderer": "^16.9.0",
     "redux": "^4.0.4",
     "uuid": "^3.3.3"
   },
@@ -34,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

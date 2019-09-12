@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoItem /> 1`] = `
+<WithStyles(ForwardRef(TableRow))>
+  <WithStyles(ForwardRef(TableCell))>
+    <WithStyles(ForwardRef(Checkbox))
+      checked={true}
+    />
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))>
+    test todo item
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))>
+    Jan 01 12:00
+  </WithStyles(ForwardRef(TableCell))>
+  <WithStyles(ForwardRef(TableCell))>
+    <WithStyles(ForwardRef(IconButton))
+      color="secondary"
+    >
+      <DeleteIcon />
+    </WithStyles(ForwardRef(IconButton))>
+  </WithStyles(ForwardRef(TableCell))>
+</WithStyles(ForwardRef(TableRow))>
+`;

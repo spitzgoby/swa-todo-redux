@@ -34,7 +34,7 @@ TodoItem.propTypes = {
     completed: PropTypes.bool,
     description: PropTypes.string,
     dueBy: PropTypes.object
-  })
+  }).isRequired
 };
 
 export default TodoItem;
