@@ -28,5 +28,7 @@ A simple todo app using Redux
 * bindActionCreators
 * memoization and reselect
 * redux-persist
-* Jest snapshots
+* Tests
+  * snapshots
+  * enzyme
 * JSS
