@@ -3,10 +3,12 @@ import {types} from './types';
 import uuid from 'uuid';
 
 const createNewTodo = (payload) => {
+  const todo = payload.todo;
+
   return {
     completed: false,
-    description: payload.description,
-    dueBy: moment(payload.dueBy),
+    description: todo.description,
+    dueBy: moment(todo.dueBy),
     id: uuid()
   };
 };
