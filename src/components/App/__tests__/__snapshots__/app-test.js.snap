@@ -7,7 +7,7 @@ exports[`<App /> 1`] = `
   <WithStyles(ForwardRef(Typography))
     variant="h2"
   >
-    Todo
+    SWA Todos
   </WithStyles(ForwardRef(Typography))>
   <Connect(TodoList) />
 </WithStyles(ForwardRef(Container))>
