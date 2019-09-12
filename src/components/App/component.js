@@ -9,7 +9,7 @@ export default () => {
   return (
     <Container className="app"> 
       <Typography variant="h2">
-        Todo
+        SWA Todos
       </Typography>
       <TodoList></TodoList>
     </Container>

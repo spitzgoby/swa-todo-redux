@@ -2,9 +2,7 @@ import moment from 'moment';
 import {types} from './types';
 import uuid from 'uuid';
 
-const createNewTodo = (payload) => {
-  const todo = payload.todo;
-
+const createNewTodo = (todo) => {
   return {
     completed: false,
     description: todo.description,
@@ -14,12 +12,28 @@ const createNewTodo = (payload) => {
 };
 
 const initialState = {
-  todos: [{
-    completed: false,
-    description: 'Finish todo app',
-    dueBy: moment().add(1, 'hour').startOf('hour'),
-    id: uuid()
-  }]
+  todos: [
+    createNewTodo({
+      description: 'Add "completeTodo" action',
+      dueBy: moment().add(1, 'hour').startOf('hour')
+    }),
+    createNewTodo({
+      description: 'Add "deleteTodo" action',
+      dueBy: moment().add(1, 'hour').startOf('hour')
+    }),
+    createNewTodo({
+      description: 'Add "clearCompletedTodos" action',
+      dueBy: moment().add(1, 'hour').startOf('hour')
+    }),
+    createNewTodo({
+      description: 'Create "getCompletedTodos" selector',
+      dueBy: moment().add(1, 'hour').startOf('hour')
+    }),
+    createNewTodo({
+      description: 'Create "getOverdueTodos" selector',
+      dueBy: moment().add(1, 'hour').startOf('hour')
+    }),
+  ]
 };
 
 export default (state = initialState, action) => {
@@ -29,7 +43,7 @@ export default (state = initialState, action) => {
     case types.ADD_TODO:
       newState = {
         ...state,
-        todos: state.todos.concat([createNewTodo(action.payload)])
+        todos: state.todos.concat([createNewTodo(action.payload.todo)])
       };
       break;
 
