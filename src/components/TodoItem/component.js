@@ -1,6 +1,7 @@
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,7 +19,7 @@ const TodoItem = (props) => {
         {todo.description}
       </TableCell>
       <TableCell>
-        {todo.dueBy.format('MMM DD hh:mm')}
+        {moment(todo.dueBy).format('MMM DD hh:mm')}
       </TableCell>
       <TableCell>
         <IconButton color="secondary">

@@ -2,11 +2,14 @@ import moment from 'moment';
 import {types} from './types';
 import uuid from 'uuid';
 
+const DUE_BY_FORMAT = 'YYYY-MM-DDThh:mm';
+const defaultDueBy = moment().add(1, 'hour').startOf('hour');
+
 const createNewTodo = (todo) => {
   return {
     completed: false,
     description: todo.description,
-    dueBy: moment(todo.dueBy),
+    dueBy: moment(todo.dueBy).format(DUE_BY_FORMAT),
     id: uuid()
   };
 };
@@ -15,24 +18,24 @@ const initialState = {
   todos: [
     createNewTodo({
       description: 'Add "completeTodo" action',
-      dueBy: moment().add(1, 'hour').startOf('hour')
+      dueBy: defaultDueBy
     }),
     createNewTodo({
       description: 'Add "deleteTodo" action',
-      dueBy: moment().add(1, 'hour').startOf('hour')
+      dueBy: defaultDueBy
     }),
     createNewTodo({
       description: 'Add "clearCompletedTodos" action',
-      dueBy: moment().add(1, 'hour').startOf('hour')
+      dueBy: defaultDueBy
     }),
     createNewTodo({
       description: 'Create "getCompletedTodos" selector',
-      dueBy: moment().add(1, 'hour').startOf('hour')
+      dueBy: defaultDueBy
     }),
     createNewTodo({
       description: 'Create "getOverdueTodos" selector',
-      dueBy: moment().add(1, 'hour').startOf('hour')
-    }),
+      dueBy: defaultDueBy
+    })
   ]
 };
 
