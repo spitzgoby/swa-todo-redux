@@ -1,9 +1,9 @@
 import Container from '@material-ui/core/Container';
 import TodoList from '../TodoList';
 import Typography from '@material-ui/core/Typography';
-import React from 'react'
+import React from 'react';
 
-import './style.scss'
+import './style.scss';
 
 export default () => {
   return (

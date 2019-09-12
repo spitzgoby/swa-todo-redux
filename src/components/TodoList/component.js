@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TodoForm from '../TodoForm';
 import TodoItem from '../TodoItem';
 
-export default (props) => {
+const TodoList = (props) => {
   return (
     <Table>
       <TableHead>
@@ -34,3 +35,13 @@ export default (props) => {
     </Table>
   );
 };
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    completed: PropTypes.bool,
+    description: PropTypes.string,
+    dueBy: PropTypes.object
+  }))
+};
+
+export default TodoList;
