@@ -34,7 +34,7 @@ TodoItem.propTypes = {
   todo: PropTypes.shape({
     completed: PropTypes.bool,
     description: PropTypes.string,
-    dueBy: PropTypes.object
+    dueBy: PropTypes.string
   }).isRequired
 };
 

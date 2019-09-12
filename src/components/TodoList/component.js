@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TodoForm from 'components/TodoForm';
 import TodoItem from 'components/TodoItem';
+import Typography from '@material-ui/core/Typography';
 
 import './style.scss';
 
@@ -46,6 +47,9 @@ const TodoList = (props) => {
           <TodoForm />
         </TableFooter>
       </Table>
+      <Typography className="todo-list--completed-count" variant="overline">
+        0 of {props.todos.length} completed
+      </Typography>
       <Button {...getClearTodosButtonProps()}>
         Clear Completed Todos
       </Button>
@@ -57,7 +61,7 @@ TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     completed: PropTypes.bool,
     description: PropTypes.string,
-    dueBy: PropTypes.object
+    dueBy: PropTypes.string
   }))
 };
 
