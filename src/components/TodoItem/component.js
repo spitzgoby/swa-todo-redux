@@ -10,10 +10,16 @@ import TableRow from '@material-ui/core/TableRow';
 const TodoItem = (props) => {
   const {todo} = props;
 
+  const handleCompleteCheckboxClicked = () => {
+      const todo = props.todo;
+
+      props.completeTodo(todo.id, !todo.completed);
+  };
+
   return (
     <TableRow>
       <TableCell>
-        <Checkbox checked={todo.completed} />
+        <Checkbox onChange={handleCompleteCheckboxClicked} checked={todo.completed} />
       </TableCell>
       <TableCell>
         {todo.description}

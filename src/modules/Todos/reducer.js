@@ -51,6 +51,21 @@ export default (state = initialState, action) => {
       };
       break;
 
+     case types.COMPLETE_TODO:
+        newState = {
+            ...state,
+            todos: state.todos.map(todo => {
+                let newTodo = {...todo};
+
+                if (todo.id === action.payload.id) {
+                    newTodo.completed = action.payload.completed;
+                }
+
+                return newTodo;
+            })
+        };
+        break;
+
     default:
       newState = state;
   }
