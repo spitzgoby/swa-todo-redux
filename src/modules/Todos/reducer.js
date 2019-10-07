@@ -1,43 +1,22 @@
 
 import moment from 'moment';
 import {types} from './actions/types';
-import uuid from 'uuid';
 
 const DUE_BY_FORMAT = 'YYYY-MM-DDThh:mm';
-const defaultDueBy = moment().add(1, 'hour').startOf('hour');
 
 const createNewTodo = (todo) => {
   return {
     completed: false,
     description: todo.description,
-    dueBy: moment(todo.dueBy).format(DUE_BY_FORMAT),
-    id: uuid()
+    dueBy: todo.dueBy ? moment(todo.dueBy).format(DUE_BY_FORMAT) : undefined,
+    id: todo.id
   };
 };
 
 const initialState = {
-  todos: [
-    createNewTodo({
-      description: 'Add "completeTodo" action',
-      dueBy: defaultDueBy
-    }),
-    createNewTodo({
-      description: 'Add "deleteTodo" action',
-      dueBy: defaultDueBy
-    }),
-    createNewTodo({
-      description: 'Add "clearCompletedTodos" action',
-      dueBy: defaultDueBy
-    }),
-    createNewTodo({
-      description: 'Create "getCompletedTodos" selector',
-      dueBy: defaultDueBy
-    }),
-    createNewTodo({
-      description: 'Create "getOverdueTodos" selector',
-      dueBy: defaultDueBy
-    })
-  ]
+  error: '',
+  searching: false,
+  todos: []
 };
 
 export default (state = initialState, action) => {
@@ -64,6 +43,29 @@ export default (state = initialState, action) => {
                 return newTodo;
             })
         };
+        break;
+
+    case types.RETRIEVE_TODOS_INIT:
+        newState = {
+            ...state,
+            searching: true
+        }
+        break;
+
+    case types.RETRIEVE_TODOS_SUCCESS:
+        newState = {
+            ...state,
+            searching: false,
+            todos: action.payload.todos
+        }
+        break;
+
+    case types.RETRIEVE_TODOS_FAILURE:
+        newState = {
+            ...state,
+            error: action.payload.error.message,
+            searching: false
+        }
         break;
 
     default:

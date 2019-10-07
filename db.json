@@ -1,0 +1,15 @@
+{
+    "todos": [{
+        "completed": false,
+        "description": "Add a \"deleteTodo\" action",
+        "id": 1
+    }, {
+        "completed": false,
+        "description": "Discuss how \"retrieveTodos\" works",
+        "id": 2
+    }, {
+        "completed": false,
+        "description": "Add an \"updateTodo\" action",
+        "id": 3
+    }]
+}

@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import {
     getCompletedTodos,
-    getTodos
+    getTodos,
+    retrieveTodos
 } from 'modules/Todos'
 import TodoList from './component';
 
@@ -10,6 +11,8 @@ const mapStateToProps = (state) => ({
     todos: getTodos(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    retrieveTodos: () => dispatch(retrieveTodos())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
