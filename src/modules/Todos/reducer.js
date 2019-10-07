@@ -1,6 +1,6 @@
 
 import moment from 'moment';
-import {types} from './types';
+import {types} from './actions/types';
 import uuid from 'uuid';
 
 const DUE_BY_FORMAT = 'YYYY-MM-DDThh:mm';
