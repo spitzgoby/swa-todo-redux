@@ -25,7 +25,7 @@ const TodoItem = (props) => {
         {todo.description}
       </TableCell>
       <TableCell>
-        {moment(todo.dueBy).format('MMM DD hh:mm')}
+        {todo.dueBy ? moment(todo.dueBy).format('MMM DD hh:mm') : ''}
       </TableCell>
       <TableCell>
         <IconButton color="secondary">
