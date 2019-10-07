@@ -48,7 +48,7 @@ const TodoList = (props) => {
         </TableFooter>
       </Table>
       <Typography className="todo-list--completed-count" variant="overline">
-        0 of {props.todos.length} completed
+        {props.completedTodos.length} of {props.todos.length} completed
       </Typography>
       <Button {...getClearTodosButtonProps()}>
         Clear Completed Todos
@@ -58,11 +58,12 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.shape({
-    completed: PropTypes.bool,
-    description: PropTypes.string,
-    dueBy: PropTypes.string
-  }))
+
+      todos: PropTypes.arrayOf(PropTypes.shape({
+        completed: PropTypes.bool,
+        description: PropTypes.string,
+        dueBy: PropTypes.string
+      }))
 };
 
 export default TodoList;

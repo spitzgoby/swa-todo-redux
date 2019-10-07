@@ -74,3 +74,4 @@ export default (state = initialState, action) => {
 };
 
 export const getTodos = (state) => state.todos;
+export const getCompletedTodos = (state) => getTodos(state).filter(todo => todo.completed);

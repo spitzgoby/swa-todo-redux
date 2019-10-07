@@ -1,9 +1,13 @@
 import {connect} from 'react-redux';
-import {getTodos} from 'modules/Todos'
+import {
+    getCompletedTodos,
+    getTodos
+} from 'modules/Todos'
 import TodoList from './component';
 
 const mapStateToProps = (state) => ({
-  todos: getTodos(state)
+    completedTodos: getCompletedTodos(state),
+    todos: getTodos(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({});

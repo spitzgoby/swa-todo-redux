@@ -9,6 +9,6 @@ exports[`<App /> 1`] = `
   >
     SWA Todos
   </WithStyles(ForwardRef(Typography))>
-  <Connect(TodoList) />
+  <Connect(Component) />
 </WithStyles(ForwardRef(Container))>
 `;
