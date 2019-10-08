@@ -95,3 +95,70 @@ includes normalization which we can discuss if we have enough time.
 within the `retrieveTodosFailure` action creator.
 
 This pattern is used inside of `modules/Todos/actions/retrieveTodos.js`.
+
+## Testing Actions
+### Coming Soon!
+
+## Normalization
+Data normalization in Redux is similar to how it works in a relational DB. We
+want to avoid data duplication by flattening deeply nested structures. This
+todo application has no nested data, but we can still demonstrate the basic
+steps required.
+Normalizing data not only prevents duplication, but in the case of React and
+Redux it allows us to perform very targeted updates. Our current data structure
+for Todo items is an array like this:
+```
+{
+    todos: [{
+        completed: false,
+        description: 'Some description',
+        dueBy: 'January 10th 2019 5:00PM',
+        id: 1
+    }]
+}
+```
+The `<TodoList />` receives this data and passes each todo item in the list as a
+props to a `<TodoItem />` which renders the data on screen. The downside to this
+approach is that updates to a single item in the list (such as completing a
+todo) forces the `<TodoList />` to perform a new render even though it is not
+responsible for rendering the checkbox. We would like to target the specific
+`<TodoItem />` which contains the updated Todo. To achieve this we will first
+split the todo list into a list of IDs and a dictionary of todo entities.
+```
+{
+    todos: [1],
+    entities: {
+        1: {
+            completed: false,
+            description: 'Some description',
+            dueBy: 'January 10th 2019 5:00PM',
+            id: 1
+        }
+    }
+}
+```
+Now the `<TodoList />` receives a list of IDs instead of a list of todos. It
+passes the ID as a prop to the child. We need to create a selector that is
+capable of receiving this ID and returning the matching todo entity. We will
+use this function inside of the `<TodoItem />` container.
+```
+// src/modules/Todos/reducer.js
+getTodoById = (state, id) => state.todos[id];
+
+// src/components/TodoItem/container.js
+import {getTodoById} from '../../modules/Todos'
+
+mapStateToProps = (state, ownProps) => ({
+    todo: getTodoById(state, ownProps.todoId)
+});
+```
+When an individual todo entity gets updated, the `<TodoList />` will not see any
+difference in its props because the list of todo IDs is the same. Only the
+`<TodoItem />` that contains the impacted todo entity will receive an update.
+
+As our data becomes more deeply nested (such as flight data) we receive even
+bigger benefits from data normalization. We reduce our overall data footprint,
+updates become easier because there is only one source of truth, there is no
+need for components to be aware of the complicated structure of their data, and
+finding data about specific entities becomes more performant since dictionary
+lookups are much faster than searching an array.
