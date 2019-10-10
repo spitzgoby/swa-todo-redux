@@ -16,6 +16,10 @@ const TodoItem = (props) => {
       props.completeTodo(todo.id, !todo.completed);
   };
 
+  const handleDeleteButtonClicked = () => {
+      props.deleteTodo(props.todo.id);
+  };
+
   return (
     <TableRow>
       <TableCell>
@@ -28,7 +32,7 @@ const TodoItem = (props) => {
         {todo.dueBy ? moment(todo.dueBy).format('MMM DD hh:mm') : ''}
       </TableCell>
       <TableCell>
-        <IconButton color="secondary">
+        <IconButton color="secondary" onClick={handleDeleteButtonClicked}>
           <DeleteIcon />
         </IconButton>
       </TableCell>
@@ -37,6 +41,8 @@ const TodoItem = (props) => {
 };
 
 TodoItem.propTypes = {
+  completeTodo: PropTypes.func,
+  deleteTodo: PropTypes.func,
   todo: PropTypes.shape({
     completed: PropTypes.bool,
     description: PropTypes.string,

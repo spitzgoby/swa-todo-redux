@@ -23,12 +23,27 @@ export default (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
-    case types.ADD_TODO:
+    case types.ADD_TODO_INIT:
       newState = {
         ...state,
         todos: state.todos.concat([createNewTodo(action.payload.todo)])
       };
       break;
+
+     case types.ADD_TODO_SUCCESS:
+        newState = {
+            ...state,
+            todos: state.todos.map(todo => {
+                let newTodo = {...todo};
+
+                if (todo.id === action.payload.tempId) {
+                    newTodo.id = action.payload.id
+                }
+
+                return newTodo;
+            })
+        }
+        break;
 
      case types.COMPLETE_TODO:
         newState = {
@@ -43,6 +58,13 @@ export default (state = initialState, action) => {
                 return newTodo;
             })
         };
+        break;
+
+    case types.DELETE_TODO:
+        newState = {
+            ...state,
+            todos: state.todos.filter(todo => todo.id !== action.payload.id)
+        }
         break;
 
     case types.RETRIEVE_TODOS_INIT:

@@ -5,6 +5,7 @@ exports[`<TodoItem /> 1`] = `
   <WithStyles(ForwardRef(TableCell))>
     <WithStyles(ForwardRef(Checkbox))
       checked={true}
+      onChange={[Function]}
     />
   </WithStyles(ForwardRef(TableCell))>
   <WithStyles(ForwardRef(TableCell))>
@@ -16,6 +17,7 @@ exports[`<TodoItem /> 1`] = `
   <WithStyles(ForwardRef(TableCell))>
     <WithStyles(ForwardRef(IconButton))
       color="secondary"
+      onClick={[Function]}
     >
       <DeleteIcon />
     </WithStyles(ForwardRef(IconButton))>
