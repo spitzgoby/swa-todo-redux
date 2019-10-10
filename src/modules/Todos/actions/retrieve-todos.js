@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {checkStatus} from '../../../utilities/check-status';
 import {types} from './types';
 
 const retrieveTodosInit = () => ({
@@ -20,7 +19,6 @@ export const retrieveTodos = () => (dispatch) => {
     dispatch(retrieveTodosInit());
 
     return axios.get('http://localhost:3001/todos')
-        .then(checkStatus)
         .then(response => dispatch(retrieveTodosSuccess(response.data)))
         .catch(error => dispatch(retrieveTodosFailure(error)));
 };
