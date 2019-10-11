@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
                 let newTodo = {...todo};
 
                 if (todo.id === action.payload.tempId) {
-                    newTodo.id = action.payload.id
+                    newTodo = {...action.payload.todo}
                 }
 
                 return newTodo;
