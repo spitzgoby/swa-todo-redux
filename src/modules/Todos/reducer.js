@@ -60,7 +60,7 @@ export default (state = initialState, action) => {
         };
         break;
 
-    case types.DELETE_TODO:
+    case types.DELETE_TODO_INIT:
         newState = {
             ...state,
             todos: state.todos.filter(todo => todo.id !== action.payload.id)
