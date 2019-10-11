@@ -162,3 +162,20 @@ updates become easier because there is only one source of truth, there is no
 need for components to be aware of the complicated structure of their data, and
 finding data about specific entities becomes more performant since dictionary
 lookups are much faster than searching an array.
+
+## Homework
+Change the `deleteTodo` action to update the mock server. The `axios` call for
+deleting the url is
+```
+axios.delete(`http://localhost:3001/todos/${id}`)
+```
+
+Bonus:
+You might also display a little notification when the todo has been successfully
+deleted. You may want to use the
+[material-ui snackbar](https://material-ui.com/components/snackbars/) component
+that is already included in this repo.
+
+Some docs that might help:
+[JSON-Server](https://github.com/typicode/json-server)  
+[axios](https://github.com/axios/axios)
