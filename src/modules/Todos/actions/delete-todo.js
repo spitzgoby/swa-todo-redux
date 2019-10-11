@@ -1,4 +1,6 @@
 import axios from 'axios'
+import {clearDeletingTodoError} from './clear-deleting-todo-error';
+import {clearRecentlyDeletedTodo} from './clear-recently-deleted-todo';
 import {types} from './types'
 
 const deleteTodoInit = (id) => ({
@@ -20,6 +22,16 @@ export const deleteTodo = (id) => (dispatch) => {
     dispatch(deleteTodoInit(id));
 
     return axios.delete(`http://localhost:3001/todos/${id}`)
-        .then(response => dispatch(deleteTodoSuccess(response.data)))
-        .catch(error => dispatch(deleteTodosFailure(error)));
+        .then(response => {
+            dispatch(deleteTodoSuccess(response.data))
+            setTimeout(() => {
+                dispatch(clearRecentlyDeletedTodo())
+            }, 2500);
+        })
+        .catch(error => {
+            dispatch(deleteTodosFailure(error))
+            setTimeout(() => {
+                dispatch(clearDeletingTodoError());
+            }, 2500);
+        });
 };
