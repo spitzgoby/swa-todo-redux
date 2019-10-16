@@ -4,11 +4,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popover from '@material-ui/core/Popover';
 import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
 const UserSelector = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    const id = open ? 'user-popover' : undefined;
 
     const handleFlyoutOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -42,7 +43,7 @@ const UserSelector = (props) => {
                     horizontal: 'center'
                 }}
             >
-                <h2 className="app--popover-title">Select Role</h2>
+                <Typography variant="h2">Select Role</Typography>
                 <FormControl fullWidth>
                     <InputLabel htmlFor="role-selector">Role</InputLabel>
                     <Select

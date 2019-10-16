@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import userReducer from 'modules/Users'
 import todosReducer from 'modules/Todos'
+import userReducer from 'modules/Users'
 
 export * from 'modules/Todos';
 
 const rootReducer = combineReducers({
-    userReducer,
-    todosReducer
+    todosReducer,
+    userReducer
 });
 
 export default rootReducer;
