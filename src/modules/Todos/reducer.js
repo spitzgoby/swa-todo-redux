@@ -15,6 +15,7 @@ const createNewTodo = (todo) => {
 
 const initialState = {
   error: '',
+  recentlyDeletedTodo: false,
   searching: false,
   todos: []
 };
@@ -42,7 +43,7 @@ export default (state = initialState, action) => {
 
                 return newTodo;
             })
-        }
+        };
         break;
 
      case types.COMPLETE_TODO:
@@ -60,18 +61,46 @@ export default (state = initialState, action) => {
         };
         break;
 
-    case types.DELETE_TODO:
+    case types.CLEAR_RECENTLY_DELETED_TODO:
+        newState = {
+            ...state,
+            recentlyDeletedTodo: false
+        };
+        break;
+
+    case types.CLEAR_DELETING_TODO_ERROR:
+        newState = {
+            ...state,
+            errorDeletingTodo: false
+        };
+        break;
+
+    case types.DELETE_TODO_INIT:
         newState = {
             ...state,
             todos: state.todos.filter(todo => todo.id !== action.payload.id)
-        }
+        };
+        break;
+
+    case types.DELETE_TODO_SUCCESS:
+        newState = {
+            ...state,
+            recentlyDeletedTodo: true
+        };
+        break;
+
+    case types.DELETE_TODO_FAILURE:
+        newState = {
+            ...state,
+            errorDeletingTodo: true
+        };
         break;
 
     case types.RETRIEVE_TODOS_INIT:
         newState = {
             ...state,
             searching: true
-        }
+        };
         break;
 
     case types.RETRIEVE_TODOS_SUCCESS:
@@ -79,7 +108,7 @@ export default (state = initialState, action) => {
             ...state,
             searching: false,
             todos: action.payload.todos
-        }
+        };
         break;
 
     case types.RETRIEVE_TODOS_FAILURE:
@@ -87,7 +116,7 @@ export default (state = initialState, action) => {
             ...state,
             error: action.payload.error.message,
             searching: false
-        }
+        };
         break;
 
     default:
@@ -97,5 +126,7 @@ export default (state = initialState, action) => {
   return newState;
 };
 
-export const getTodos = (state) => state.todosReducer.todos;
 export const getCompletedTodos = (state) => getTodos(state).filter(todo => todo.completed);
+export const getErrorDeletingTodo = (state) => state.todosReducer.errorDeletingTodo;
+export const getRecentlyDeletedTodo = (state) => state.todosReducer.recentlyDeletedTodo;
+export const getTodos = (state) => state.todosReducer.todos;
