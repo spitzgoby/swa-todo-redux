@@ -21,4 +21,4 @@ export default (state = initialState, action) => {
     return newState;
 };
 
-export const getUser = (state) => state.userReducer.user;
+export const getUser = (state) => state.User.user;

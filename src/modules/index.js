@@ -5,8 +5,8 @@ import userReducer from 'modules/Users'
 export * from 'modules/Todos';
 
 const rootReducer = combineReducers({
-    todosReducer,
-    userReducer
+    Todos: todosReducer,
+    User: userReducer
 });
 
 export default rootReducer;
