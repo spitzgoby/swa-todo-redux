@@ -4,11 +4,13 @@ import {
     getTodos,
     retrieveTodos
 } from 'modules/Todos'
+import {getUser} from 'modules/Users';
 import TodoList from './component';
 
 const mapStateToProps = (state) => ({
     completedTodos: getCompletedTodos(state),
-    todos: getTodos(state)
+    todos: getTodos(state),
+    user: getUser(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -10,7 +10,7 @@ const TodoForm = (props) => {
   const getEmptyTodoForm = () => {
     return {
       description: '',
-      dueBy: moment().add(2, 'hours').startOf('hour').format('YYYY-MM-DDTHH:mm') 
+      dueBy: moment().add(2, 'hours').startOf('hour').format('YYYY-MM-DDTHH:mm')
     }
   }
 
@@ -47,7 +47,7 @@ const TodoForm = (props) => {
         <TextField type="datetime-local" {...getTextFieldProps('dueBy')} />
       </TableCell>
       <TableCell>
-        <Button onClick={handleAddClick} variant="contained">
+        <Button color="primary" onClick={handleAddClick} variant="contained">
           Add
         </Button>
       </TableCell>

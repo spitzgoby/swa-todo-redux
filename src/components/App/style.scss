@@ -1,14 +1,13 @@
 .app {
-    &--popover-title {
-        text-align: center;
-    }
+    &--snackbar {
+      &_successful {
+          // please forgive the !important. I didn't want to do the standard
+          // material ui override as it's outside the scope of our sessions
+          background-color: green !important;
+      }
 
-    &--role-selector {
-        float: right;
-        bottom: 35px;
+      &_failure {
+          background-color: red !important;
+      }
     }
-}
-
-.MuiPopover-paper {
-    width: 200px;
 }

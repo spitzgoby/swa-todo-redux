@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button';
+import Fade from '@material-ui/core/Fade';
 import PropTypes from 'prop-types';
 import React, {useEffect} from 'react';
 import Table from '@material-ui/core/Table';
@@ -24,7 +25,7 @@ const TodoList = (props) => {
     return {
       className: 'todo-list--clear-todos-button',
       onClick: () => {},
-      variant: 'contained'
+      variant: 'outlined'
     };
   };
 
@@ -49,7 +50,7 @@ const TodoList = (props) => {
           {props.todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
         </TableBody>
         <TableFooter>
-          <TodoForm />
+            { props.user === 'parent' ? <TodoForm /> : null }
         </TableFooter>
       </Table>
       <Typography className="todo-list--completed-count" variant="overline">
@@ -63,12 +64,12 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
-
-      todos: PropTypes.arrayOf(PropTypes.shape({
+    todos: PropTypes.arrayOf(PropTypes.shape({
         completed: PropTypes.bool,
         description: PropTypes.string,
         dueBy: PropTypes.string
-      }))
+    })),
+    user: PropTypes.string
 };
 
 export default TodoList;
