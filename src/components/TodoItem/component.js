@@ -51,7 +51,8 @@ TodoItem.propTypes = {
     description: PropTypes.string,
     dueBy: PropTypes.string,
     id: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  user: PropTypes.string
 };
 
 export default TodoItem;
