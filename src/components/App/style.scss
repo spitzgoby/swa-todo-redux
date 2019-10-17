@@ -1,3 +1,14 @@
 .app {
-  
+    &--popover-title {
+        text-align: center;
+    }
+
+    &--role-selector {
+        float: right;
+        bottom: 35px;
+    }
+}
+
+.MuiPopover-paper {
+    width: 200px;
 }

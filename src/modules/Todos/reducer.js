@@ -97,5 +97,5 @@ export default (state = initialState, action) => {
   return newState;
 };
 
-export const getTodos = (state) => state.todos;
+export const getTodos = (state) => state.todosReducer.todos;
 export const getCompletedTodos = (state) => getTodos(state).filter(todo => todo.completed);
