@@ -54,7 +54,7 @@ const UserSelector = (props) => {
     return (
         <div className="user-selector">
             <Button className="user-selector--role-selector" variant="outlined" onClick={handleFlyoutOpen}>
-                Select Role
+                {props.user || 'Select Role'}
             </Button>
             <Popover {...getPopoverProps()}>
                 <FormControl fullWidth>

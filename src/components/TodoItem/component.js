@@ -1,5 +1,6 @@
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -32,9 +33,11 @@ const TodoItem = (props) => {
         {todo.dueBy ? moment(todo.dueBy).format('MMM DD hh:mm') : ''}
       </TableCell>
       <TableCell>
-        <IconButton color="secondary" onClick={handleDeleteButtonClicked}>
-          <DeleteIcon />
-        </IconButton>
+        <Fade in={props.user === 'parent'}>
+            <IconButton color="secondary" onClick={handleDeleteButtonClicked}>
+                <DeleteIcon />
+            </IconButton>
+        </Fade>
       </TableCell>
     </TableRow>
   );
@@ -47,7 +50,7 @@ TodoItem.propTypes = {
     completed: PropTypes.bool,
     description: PropTypes.string,
     dueBy: PropTypes.string,
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
   }).isRequired
 };
 
