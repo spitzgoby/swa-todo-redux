@@ -24,7 +24,7 @@ const TodoList = (props) => {
     return {
       className: 'todo-list--clear-todos-button',
       onClick: () => {},
-      variant: 'contained'
+      variant: 'outlined'
     };
   };
 

@@ -1,0 +1,16 @@
+.user-selector {
+
+    &--popover-title {
+        text-align: center;
+    }
+
+    &--role-selector {
+        float: right;
+        bottom: 35px;
+    }
+}
+
+.MuiPopover-paper {
+    padding: 12px;
+    width: 200px;
+}
