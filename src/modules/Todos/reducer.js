@@ -127,6 +127,6 @@ export default (state = initialState, action) => {
 };
 
 export const getCompletedTodos = (state) => getTodos(state).filter(todo => todo.completed);
-export const getErrorDeletingTodo = (state) => state.todosReducer.errorDeletingTodo;
-export const getRecentlyDeletedTodo = (state) => state.todosReducer.recentlyDeletedTodo;
-export const getTodos = (state) => state.todosReducer.todos;
+export const getErrorDeletingTodo = (state) => state.Todos.errorDeletingTodo;
+export const getRecentlyDeletedTodo = (state) => state.Todos.recentlyDeletedTodo;
+export const getTodos = (state) => state.Todos.todos;
