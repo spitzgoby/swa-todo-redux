@@ -4,3 +4,4 @@ export * from './clear-recently-deleted-todo';
 export * from './complete-todo';
 export * from './delete-todo';
 export * from './retrieve-todos';
+export * from './update-todo-form';

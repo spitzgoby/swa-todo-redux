@@ -10,5 +10,6 @@ export const types = {
   DELETE_TODO_FAILURE: '@swa-todo-redux/Todos/DELETE_TODO_FAILURE',
   RETRIEVE_TODOS_FAILURE: '@swa-todo-redux/Todos/RETRIEVE_TODOS_FAILURE',
   RETRIEVE_TODOS_INIT: '@swa-todo-redux/Todos/RETRIEVE_TODOS_INIT',
-  RETRIEVE_TODOS_SUCCESS: '@swa-todo-redux/Todos/RETRIEVE_TODOS_SUCCESS'
+  RETRIEVE_TODOS_SUCCESS: '@swa-todo-redux/Todos/RETRIEVE_TODOS_SUCCESS',
+  UPDATE_TODO_FORM: '@swa-todo-redux/Todos/UPDATE_TODO_FORM'
 };
