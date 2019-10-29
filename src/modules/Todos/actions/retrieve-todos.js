@@ -5,10 +5,22 @@ const retrieveTodosInit = () => ({
     type: types.RETRIEVE_TODOS_INIT
 });
 
-const retrieveTodosSuccess = (data) => ({
-    type: types.RETRIEVE_TODOS_SUCCESS,
-    payload: {todos: data}
-});
+const retrieveTodosSuccess = (data) => {
+    const payload = data.reduce((accumulator, todo) => {
+        accumulator.entities[todo.id] = todo;
+        accumulator.todos.push(todo.id);
+
+        return accumulator;
+    }, {
+        entities: {},
+        todos: []
+    });
+
+    return {
+        type: types.RETRIEVE_TODOS_SUCCESS,
+        payload
+    };
+};
 
 const retrieveTodosFailure = (error) => ({
     type: types.RETRIEVE_TODOS_FAILURE,

@@ -14,6 +14,7 @@ const createNewTodo = (todo) => {
 };
 
 const initialState = {
+  entities: {},
   error: '',
   recentlyDeletedTodo: false,
   searching: false,
@@ -27,21 +28,26 @@ export default (state = initialState, action) => {
     case types.ADD_TODO_INIT:
       newState = {
         ...state,
-        todos: state.todos.concat([createNewTodo(action.payload.todo)])
+        entities: {
+            ...state.entities,
+            [action.payload.todo.id]: action.payload.todo
+        },
+        todos: state.todos.concat([action.payload.todo.id])
       };
       break;
 
      case types.ADD_TODO_SUCCESS:
         newState = {
             ...state,
-            todos: state.todos.map(todo => {
-                let newTodo = {...todo};
-
-                if (todo.id === action.payload.tempId) {
-                    newTodo = {...action.payload.todo}
-                }
-
-                return newTodo;
+            entities: {
+                ...state.entities,
+                [action.payload.tempId]: undefined,
+                [action.payload.todo.id]: action.payload.todo
+            },
+            todos: state.todos.map(todoId => {
+                return action.payload.tempId === todoId ?
+                    action.payload.todo.id :
+                    todoId
             })
         };
         break;
@@ -49,15 +55,13 @@ export default (state = initialState, action) => {
      case types.COMPLETE_TODO:
         newState = {
             ...state,
-            todos: state.todos.map(todo => {
-                let newTodo = {...todo};
-
-                if (todo.id === action.payload.id) {
-                    newTodo.completed = action.payload.completed;
+            entities: {
+                ...state.entities,
+                [action.payload.id]: {
+                    ...state.entities[action.payload.id],
+                    completed: action.payload.completed
                 }
-
-                return newTodo;
-            })
+            }
         };
         break;
 
@@ -78,7 +82,11 @@ export default (state = initialState, action) => {
     case types.DELETE_TODO_INIT:
         newState = {
             ...state,
-            todos: state.todos.filter(todo => todo.id !== action.payload.id)
+            entities: {
+                ...state.entities,
+                [action.payload.id]: undefined
+            },
+            todos: state.todos.filter(todoId => todoId !== action.payload.id)
         };
         break;
 
@@ -106,6 +114,7 @@ export default (state = initialState, action) => {
     case types.RETRIEVE_TODOS_SUCCESS:
         newState = {
             ...state,
+            entities: action.payload.entities,
             searching: false,
             todos: action.payload.todos
         };
@@ -126,7 +135,12 @@ export default (state = initialState, action) => {
   return newState;
 };
 
-export const getCompletedTodos = (state) => getTodos(state).filter(todo => todo.completed);
+export const getCompletedTodos = (state) => {
+    return getTodos(state).filter(todoId => {
+        return state.Todos.entities[todoId].completed
+    });
+}
 export const getErrorDeletingTodo = (state) => state.Todos.errorDeletingTodo;
 export const getRecentlyDeletedTodo = (state) => state.Todos.recentlyDeletedTodo;
+export const getTodoById = (state, id) => state.Todos.entities[id];
 export const getTodos = (state) => state.Todos.todos;

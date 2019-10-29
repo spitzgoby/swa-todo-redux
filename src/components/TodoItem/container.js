@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
-import {completeTodo, deleteTodo} from 'modules/Todos';
+import {completeTodo, deleteTodo, getTodoById} from 'modules/Todos';
 import {getUser} from 'modules/Users';
 import TodoItem from './component';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+    todo: getTodoById(state, ownProps.todoId),
     user: getUser(state)
 })
 

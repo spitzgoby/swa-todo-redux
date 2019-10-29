@@ -46,7 +46,7 @@ const TodoList = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
+          {props.todos.map(todoId => <TodoItem key={todoId} todoId={todoId} />)}
         </TableBody>
         <TableFooter>
             { props.user === 'parent' ? <TodoForm /> : null }
@@ -63,11 +63,7 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.shape({
-        completed: PropTypes.bool,
-        description: PropTypes.string,
-        dueBy: PropTypes.string
-    })),
+    todos: PropTypes.arrayOf(PropTypes.number),
     user: PropTypes.string
 };
 
