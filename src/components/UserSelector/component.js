@@ -3,13 +3,13 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popover from '@material-ui/core/Popover';
-import React from 'react';
+import React, {useState} from 'react';
 import Select from '@material-ui/core/Select';
 
 import './style.scss';
 
 const UserSelector = (props) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const id = open ? 'user-popover' : undefined;
 

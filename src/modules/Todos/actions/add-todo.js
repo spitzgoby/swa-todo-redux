@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {types} from './types';
+import uuid from 'uuid';
 
 const addTodoInit = (id, todo) => ({
     type: types.ADD_TODO_INIT,
@@ -25,7 +26,7 @@ const addTodoFailure = (error) => ({
 });
 
 export const addTodo = (todo) => (dispatch, getState) => {
-    const tempId = getState().todos.length + 1;
+    const tempId = uuid();
 
     dispatch(addTodoInit(tempId, todo));
 
