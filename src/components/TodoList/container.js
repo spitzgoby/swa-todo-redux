@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {
+    clearCompletedTodos,
     getCompletedTodos,
     getTodos,
     retrieveTodos
@@ -14,6 +15,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    clearCompletedTodos: () => dispatch(clearCompletedTodos()),
     retrieveTodos: () => dispatch(retrieveTodos())
 });
 

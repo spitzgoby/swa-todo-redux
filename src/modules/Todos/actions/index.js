@@ -1,4 +1,5 @@
 export * from './add-todo';
+export * from './clear-completed-todos';
 export * from './clear-deleting-todo-error';
 export * from './clear-recently-deleted-todo';
 export * from './complete-todo';

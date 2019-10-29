@@ -1,5 +1,4 @@
 
-import moment from 'moment';
 import {types} from './actions/types';
 
 const initialState = {
@@ -39,6 +38,24 @@ export default (state = initialState, action) => {
                     todoId
             })
         };
+        break;
+
+    case types.CLEAR_COMPLETED_TODOS:
+        newState = {
+            ...state,
+            entities: {
+                ...state.entities,
+                ...state.todos.reduce((accumulator, todoId) => {
+                    const todo = state.entities[todoId];
+
+                    accumulator[todoId] = todo.completed ? undefined : todo;
+
+                    return accumulator;
+                }, {})
+            },
+            todos: state.todos.filter(todoId => !state.entities[todoId].completed)
+        };
+
         break;
 
      case types.COMPLETE_TODO:
