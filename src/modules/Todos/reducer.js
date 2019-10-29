@@ -2,17 +2,6 @@
 import moment from 'moment';
 import {types} from './actions/types';
 
-const DUE_BY_FORMAT = 'YYYY-MM-DDThh:mm';
-
-const createNewTodo = (todo) => {
-  return {
-    completed: false,
-    description: todo.description,
-    dueBy: todo.dueBy ? moment(todo.dueBy).format(DUE_BY_FORMAT) : undefined,
-    id: todo.id
-  };
-};
-
 const initialState = {
   entities: {},
   error: '',
