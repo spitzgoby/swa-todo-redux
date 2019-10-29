@@ -15,12 +15,16 @@ exports[`<TodoItem /> 1`] = `
     Jan 01 12:00
   </WithStyles(ForwardRef(TableCell))>
   <WithStyles(ForwardRef(TableCell))>
-    <WithStyles(ForwardRef(IconButton))
-      color="secondary"
-      onClick={[Function]}
+    <ForwardRef(Fade)
+      in={false}
     >
-      <DeleteIcon />
-    </WithStyles(ForwardRef(IconButton))>
+      <WithStyles(ForwardRef(IconButton))
+        color="secondary"
+        onClick={[Function]}
+      >
+        <DeleteIcon />
+      </WithStyles(ForwardRef(IconButton))>
+    </ForwardRef(Fade)>
   </WithStyles(ForwardRef(TableCell))>
 </WithStyles(ForwardRef(TableRow))>
 `;
