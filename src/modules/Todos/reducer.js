@@ -1,10 +1,15 @@
-
 import moment from 'moment';
 import {types} from './actions/types';
+
+const getInitialForm = () => ({
+    description: '',
+    dueBy: moment().add(2, 'hours').startOf('hour').format('YYYY-MM-DDTHH:mm')
+});
 
 const initialState = {
   entities: {},
   error: '',
+  form: getInitialForm(),
   recentlyDeletedTodo: false,
   searching: false,
   todos: []
@@ -21,6 +26,7 @@ export default (state = initialState, action) => {
             ...state.entities,
             [action.payload.todo.id]: action.payload.todo
         },
+        form: getInitialForm(),
         todos: state.todos.concat([action.payload.todo.id])
       };
       break;
@@ -117,6 +123,14 @@ export default (state = initialState, action) => {
         };
         break;
 
+    case types.UPDATE_TODO_FORM:
+        newState = {
+            ...state,
+            form: {...action.payload}
+        };
+
+        break;
+
     default:
       newState = state;
   }
@@ -130,6 +144,7 @@ export const getCompletedTodos = (state) => {
     });
 }
 export const getErrorDeletingTodo = (state) => state.Todos.errorDeletingTodo;
+export const getForm = (state) => state.Todos.form;
 export const getRecentlyDeletedTodo = (state) => state.Todos.recentlyDeletedTodo;
 export const getTodoById = (state, id) => state.Todos.entities[id];
 export const getTodos = (state) => state.Todos.todos;
