@@ -21,26 +21,12 @@ exports[`<TodoList /> should render correctly 1`] = `
     </WithStyles(ForwardRef(TableHead))>
     <WithStyles(ForwardRef(TableBody))>
       <Connect(TodoItem)
-        key="0"
-        todo={
-          Object {
-            "completed": false,
-            "description": "todo",
-            "dueBy": "",
-            "id": 0,
-          }
-        }
+        key="1"
+        todoId={1}
       />
       <Connect(TodoItem)
-        key="1"
-        todo={
-          Object {
-            "completed": false,
-            "description": "todo",
-            "dueBy": "",
-            "id": 1,
-          }
-        }
+        key="2"
+        todoId={2}
       />
     </WithStyles(ForwardRef(TableBody))>
     <WithStyles(ForwardRef(TableFooter)) />

@@ -1,23 +1,10 @@
-import TodoList from 'components/TodoList/component';
 import React from 'react';
 import {shallow} from 'enzyme';
+import TodoItem from 'components/TodoItem/component';
+import TodoList from 'components/TodoList/component';
 
 describe('<TodoList />', () => {
     const mockProps = {
-        todos: [
-                    {
-                        completed: false,
-                        description: 'todo',
-                        dueBy: '',
-                        id: 0
-                    },
-                    {
-                        completed: false,
-                        description: 'todo',
-                        dueBy: '',
-                        id: 1
-                    }
-                ],
         completedTodos: [
             {
                 completed: true,
@@ -25,15 +12,26 @@ describe('<TodoList />', () => {
                 dueBy: '',
                 id: 0
             },
-        ]
+        ],
+        todos: [1, 2]
 };
-    const appWrapper = shallow(<TodoList {...mockProps} />);
 
     it('should render correctly', () => {    
+        const appWrapper = shallow(<TodoList {...mockProps} />);
+
         expect(appWrapper).toMatchSnapshot();
     })
     
     it('should be selectable by class "todo-list"', () => {
-        expect(shallow(<TodoList {...mockProps} />).is('.todo-list')).toBe(true);
+        const appWrapper = shallow(<TodoList {...mockProps} />);
+
+        expect(appWrapper.is('.todo-list')).toBe(true);
     });
+
+    // TODO: WIP
+    // it('should render two todos', () => {
+    //     const appWrapper = shallow(<TodoList {...mockProps} />);
+        
+    //     expect(appWrapper.find(TodoItem)).to.have.lengthOf(2);
+    // });
 })
