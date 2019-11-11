@@ -63,7 +63,7 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.number),
+    todos: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     user: PropTypes.string
 };
 

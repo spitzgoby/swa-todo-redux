@@ -1,5 +1,6 @@
-import moment from 'moment';
 import {types} from './actions/types';
+import moment from 'moment';
+import {createSelector} from 'reselect';
 
 const getInitialForm = () => ({
     description: '',
@@ -138,13 +139,14 @@ export default (state = initialState, action) => {
   return newState;
 };
 
-export const getCompletedTodos = (state) => {
-    return getTodos(state).filter(todoId => {
-        return state.Todos.entities[todoId].completed
-    });
-}
+const getEntities = (state) => state.Todos.entities;
 export const getErrorDeletingTodo = (state) => state.Todos.errorDeletingTodo;
 export const getForm = (state) => state.Todos.form;
 export const getRecentlyDeletedTodo = (state) => state.Todos.recentlyDeletedTodo;
 export const getTodoById = (state, id) => state.Todos.entities[id];
 export const getTodos = (state) => state.Todos.todos;
+export const getCompletedTodos = createSelector(
+    getEntities,
+    getTodos,
+    (entities, todos) => todos.filter(todoId => entities[todoId].completed)
+);

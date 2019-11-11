@@ -19,7 +19,7 @@ const UserSelector = (props) => {
             vertical: 'bottom',
             horizontal: 'center'
         },
-        classname: 'user-selector--popover',
+        className: 'user-selector--popover',
         id: id,
         onClose: handleClose,
         open: open,
