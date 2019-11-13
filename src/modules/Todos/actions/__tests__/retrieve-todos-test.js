@@ -43,7 +43,7 @@ describe('retrieveTodos()', () => {
                 status: 200
             })
         });
-        // TODO: fix failing test
+        
         return mockStore.dispatch(retrieveTodos())
             .then(() => {
                 expect(mockStore.getActions()).toEqual(expectedActions)
