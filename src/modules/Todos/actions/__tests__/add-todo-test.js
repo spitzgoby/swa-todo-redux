@@ -1,4 +1,4 @@
-import {addTodo} from '../__mocks__/add-todo';
+import {addTodo} from '../add-todo';
 import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
