@@ -29,7 +29,9 @@ exports[`<TodoList /> should render correctly 1`] = `
         todoId={2}
       />
     </WithStyles(ForwardRef(TableBody))>
-    <WithStyles(ForwardRef(TableFooter)) />
+    <WithStyles(ForwardRef(TableFooter))>
+      <Connect(TodoForm) />
+    </WithStyles(ForwardRef(TableFooter))>
   </WithStyles(ForwardRef(Table))>
   <WithStyles(ForwardRef(Typography))
     className="todo-list--completed-count"
