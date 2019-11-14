@@ -4,11 +4,42 @@ exports[`<App /> 1`] = `
 <WithStyles(ForwardRef(Container))
   className="app"
 >
-  <WithStyles(ForwardRef(Typography))
-    variant="h2"
-  >
-    SWA Todos
-  </WithStyles(ForwardRef(Typography))>
+  <div>
+    <WithStyles(ForwardRef(Snackbar))
+      ContentProps={
+        Object {
+          "className": "app--snackbar_successful",
+        }
+      }
+      anchorOrigin={
+        Object {
+          "horizontal": "right",
+          "vertical": "top",
+        }
+      }
+      message="Todo successfully deleted"
+    />
+    <WithStyles(ForwardRef(Snackbar))
+      ContentProps={
+        Object {
+          "className": "app--snackbar_failure",
+        }
+      }
+      anchorOrigin={
+        Object {
+          "horizontal": "right",
+          "vertical": "top",
+        }
+      }
+      message="Error deleting Todo"
+    />
+    <WithStyles(ForwardRef(Typography))
+      variant="h2"
+    >
+      SWA Todos
+    </WithStyles(ForwardRef(Typography))>
+    <Connect(UserSelector) />
+  </div>
   <Connect(TodoList) />
 </WithStyles(ForwardRef(Container))>
 `;
