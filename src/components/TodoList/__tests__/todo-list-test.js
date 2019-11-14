@@ -15,7 +15,7 @@ describe('<TodoList />', () => {
                 id: 0
             },
         ],
-        retrieveTodos: jest.fn().mockResolvedValue([1,2]),
+        retrieveTodos: jest.fn(),
         todos: [1, 2],
         user: 'parent'
     };

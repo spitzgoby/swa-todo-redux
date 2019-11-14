@@ -20,7 +20,7 @@ describe('addTodo actions', () => {
     const mockResponse = {
         tempId: 123456,
         todo: {
-            tempId: 123456,
+            id: 123456,
             todo: mockTodo
         }
     };
