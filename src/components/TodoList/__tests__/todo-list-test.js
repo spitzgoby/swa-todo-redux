@@ -1,9 +1,8 @@
-import _ from 'lodash';
-import React, { useEffect } from 'react';
-import {shallow} from 'enzyme';
-import TodoList from 'components/TodoList/component';
-import { TableBody } from '@material-ui/core';
 import TodoForm from 'components/TodoForm/component';
+import TodoList from 'components/TodoList/component';
+import { shallow } from 'enzyme';
+import { TableBody } from '@material-ui/core';
+import React from 'react';
 
 describe('<TodoList />', () => {
     const mockProps = {
@@ -19,43 +18,33 @@ describe('<TodoList />', () => {
         todos: [1, 2],
         user: 'parent'
     };
-    const mockUseEffect = () => {
-        useEffect.mockImplementationOnce(f => f());
-    };
-    let useEffect;
 
-    beforeEach(() => {
-        useEffect = jest.spyOn(React, 'useEffect');
-        
-        mockUseEffect();
-    });
+    it('should render correctly', () => {
+        const wrapper = shallow(<TodoList {...mockProps} />);
 
-    it('should render correctly', () => {    
-        const appWrapper = shallow(<TodoList {...mockProps} />);
-
-        expect(appWrapper).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should call retrieveTodos', () => {
-        expect(mockProps.retrieveTodos).toHaveBeenCalled();
+        // coming soon!
     });
-    
+
     it('should render two todos', () => {
-        const appWrapper = shallow(<TodoList {...mockProps} />);
-        
-        expect(appWrapper.find(TableBody).children()).toHaveLength(mockProps.todos.length);
+        const wrapper = shallow(<TodoList {...mockProps} />);
+
+        expect(wrapper.find(TableBody).children()).toHaveLength(mockProps.todos.length);
     });
 
     it('should render TodoForm if user is parent', () => {
-        const appWrapper = shallow(<TodoList {...mockProps} />);
+        const wrapper = shallow(<TodoList {...mockProps} />);
 
-        expect(appWrapper.find(TodoForm)).toBeDefined();
+        expect(wrapper.find(TodoForm)).toBeDefined();
     });
 
     it('should render completed count', () => {
-        const appWrapper = shallow(<TodoList {...mockProps} />);
+        const wrapper = shallow(<TodoList {...mockProps} />);
 
-        expect(appWrapper.find('.todo-list--completed-count').text())
+        expect(wrapper.find('.todo-list--completed-count').text())
         .toEqual(`${mockProps.completedTodos.length} of ${mockProps.todos.length} completed`);
     });
 })
