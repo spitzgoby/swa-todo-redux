@@ -5,7 +5,7 @@ import TodoList from 'components/TodoList/component';
 import { TableBody } from '@material-ui/core';
 import TodoForm from 'components/TodoForm/component';
 
-describe.only('<TodoList />', () => {
+describe('<TodoList />', () => {
     const mockProps = {
         completedTodos: [
             {
@@ -37,8 +37,6 @@ describe.only('<TodoList />', () => {
     });
 
     it('should call retrieveTodos', () => {
-        const appWrapper = shallow(<TodoList {...mockProps} />);
-        
         expect(mockProps.retrieveTodos).toHaveBeenCalled();
     });
     
