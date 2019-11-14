@@ -8,7 +8,7 @@ test('<TodoItem />', () => {
     completed: true,
     description: 'test todo item',
     dueBy: moment('2019-01-01T00:00').format(),
-    id: 'test'
+    id: 1
   };
   const todoItemWrapper = shallow(<TodoItem todo={mockTodo} />);
 

@@ -7,7 +7,11 @@ import {types} from '../types';
 describe('retrieveTodos()', () => {
     const mockInitialState = {};
     let mockStore;
-    const mockTodos = ['Test'];
+    const mockTodos = [{
+        completed: true,
+        description: 'Test',
+        id: 1
+    }];
 
     beforeEach(() => {
         mockStore = configureMockStore([thunk])(mockInitialState);
@@ -23,7 +27,12 @@ describe('retrieveTodos()', () => {
             type: types.RETRIEVE_TODOS_INIT
         }, {
             type: types.RETRIEVE_TODOS_SUCCESS,
-            payload: {todos: mockTodos}
+            payload: {
+                entities: {
+                    1: mockTodos[0]
+                }, 
+                    todos: [1]
+                }
         }];
 
         moxios.wait(() => {
@@ -34,9 +43,11 @@ describe('retrieveTodos()', () => {
                 status: 200
             })
         });
-
+        
         return mockStore.dispatch(retrieveTodos())
-            .then(() => expect(mockStore.getActions()).toEqual(expectedActions));
+            .then(() => {
+                expect(mockStore.getActions()).toEqual(expectedActions)
+            });
     });
 
     it('should dispatch a failure action when the request fails', () => {
