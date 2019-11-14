@@ -3,8 +3,9 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 import {types} from '../types';
+import uuid from 'uuid';
 
-jest.mock('../add-todo');
+jest.mock('uuid');
 
 describe('addTodo actions', () => {
     const initialState = {
@@ -31,6 +32,7 @@ describe('addTodo actions', () => {
     beforeEach(() => {
         mockStore = configureMockStore([thunk])(initialState);
         moxios.install();
+        uuid.mockImplementation(() => 123456);
     });
 
     afterEach(() => {
