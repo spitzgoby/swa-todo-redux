@@ -1,7 +1,7 @@
 import TodoForm from 'components/TodoForm/component';
 import TodoList from 'components/TodoList/component';
 import { shallow } from 'enzyme';
-import { TableBody } from '@material-ui/core';
+import { Button, TableBody } from '@material-ui/core';
 import React from 'react';
 
 describe('<TodoList />', () => {
@@ -18,10 +18,13 @@ describe('<TodoList />', () => {
         todos: [1, 2],
         user: 'parent'
     };
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<TodoList {...mockProps} />);
+    });
 
     it('should render correctly', () => {
-        const wrapper = shallow(<TodoList {...mockProps} />);
-
         expect(wrapper).toMatchSnapshot();
     });
 
@@ -30,21 +33,19 @@ describe('<TodoList />', () => {
     });
 
     it('should render two todos', () => {
-        const wrapper = shallow(<TodoList {...mockProps} />);
-
         expect(wrapper.find(TableBody).children()).toHaveLength(mockProps.todos.length);
     });
 
     it('should render TodoForm if user is parent', () => {
-        const wrapper = shallow(<TodoList {...mockProps} />);
-
         expect(wrapper.find(TodoForm)).toBeDefined();
     });
 
     it('should render completed count', () => {
-        const wrapper = shallow(<TodoList {...mockProps} />);
-
         expect(wrapper.find('.todo-list--completed-count').text())
         .toEqual(`${mockProps.completedTodos.length} of ${mockProps.todos.length} completed`);
+    });
+
+    it('should clear completed todos', () => {
+        wrapper.find(Button).simulate('click', {});
     });
 })

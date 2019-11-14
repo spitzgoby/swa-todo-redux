@@ -23,7 +23,9 @@ const TodoList = (props) => {
   const getClearTodosButtonProps = () => {
     return {
       className: 'todo-list--clear-todos-button',
-      onClick: () => {},
+      onClick: () => {
+          console.log('clicked')
+      },
       variant: 'outlined'
     };
   };
