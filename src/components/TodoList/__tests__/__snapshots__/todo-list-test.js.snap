@@ -1,6 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TodoList /> should render correctly 1`] = `
+exports[`<TodoList /> should render correctly with no todos: no-todos 1`] = `
+<div
+  className="todo-list"
+>
+  <WithStyles(ForwardRef(Table))>
+    <WithStyles(ForwardRef(TableHead))>
+      <WithStyles(ForwardRef(TableRow))>
+        <WithStyles(ForwardRef(TableCell))>
+          Completed
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))>
+          Description
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))>
+          Due By
+        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell)) />
+      </WithStyles(ForwardRef(TableRow))>
+    </WithStyles(ForwardRef(TableHead))>
+    <WithStyles(ForwardRef(TableBody)) />
+    <WithStyles(ForwardRef(TableFooter))>
+      <Connect(TodoForm) />
+    </WithStyles(ForwardRef(TableFooter))>
+  </WithStyles(ForwardRef(Table))>
+  <WithStyles(ForwardRef(Typography))
+    className="todo-list--completed-count"
+    variant="overline"
+  >
+    1
+     of 
+    0
+     completed
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(ForwardRef(Button))
+    className="todo-list--clear-todos-button"
+    onClick={[Function]}
+    variant="outlined"
+  >
+    Clear Completed Todos
+  </WithStyles(ForwardRef(Button))>
+</div>
+`;
+
+exports[`<TodoList /> should render correctly with two todos: two-todos 1`] = `
 <div
   className="todo-list"
 >

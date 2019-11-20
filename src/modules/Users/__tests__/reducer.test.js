@@ -13,9 +13,7 @@ describe('user reducer', () => {
             type: 'fake-action-type'
         };
         const mockCurrentState = {
-            User: {
-                user: {id: 'test'}
-            }
+            user: {id: 'test'}
         };
 
         expect(reducer(mockCurrentState, mockAction)).toEqual(mockCurrentState);

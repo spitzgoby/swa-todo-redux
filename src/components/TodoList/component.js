@@ -20,12 +20,18 @@ const TodoList = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleClearTodosButtonClick = () => {
+      const clearCompletedTodos = props.clearCompletedTodos;
+
+      if (clearCompletedTodos) {
+          clearCompletedTodos();
+      }
+  };
+
   const getClearTodosButtonProps = () => {
     return {
       className: 'todo-list--clear-todos-button',
-      onClick: () => {
-          console.log('clicked')
-      },
+      onClick: handleClearTodosButtonClick,
       variant: 'outlined'
     };
   };
@@ -65,6 +71,7 @@ const TodoList = (props) => {
 };
 
 TodoList.propTypes = {
+    clearCompletedTodos: PropTypes.func,
     todos: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     user: PropTypes.string
 };

@@ -5,7 +5,10 @@ import { Button, TableBody } from '@material-ui/core';
 import React from 'react';
 
 describe('<TodoList />', () => {
+    const clearCompletedTodosSpy = jest.fn();
+
     const mockProps = {
+        clearCompletedTodos: clearCompletedTodosSpy,
         completedTodos: [
             {
                 completed: true,
@@ -15,7 +18,7 @@ describe('<TodoList />', () => {
             },
         ],
         retrieveTodos: jest.fn(),
-        todos: [1, 2],
+        todos: [],
         user: 'parent'
     };
     let wrapper;
@@ -24,8 +27,14 @@ describe('<TodoList />', () => {
         wrapper = shallow(<TodoList {...mockProps} />);
     });
 
-    it('should render correctly', () => {
-        expect(wrapper).toMatchSnapshot();
+    it('should render correctly with no todos', () => {
+        expect(wrapper).toMatchSnapshot('no-todos');
+    });
+
+    it('should render correctly with two todos', () => {
+        wrapper = shallow(<TodoList {...mockProps} todos={[1, 2]} />);
+
+        expect(wrapper).toMatchSnapshot('two-todos');
     });
 
     it('should call retrieveTodos', () => {
@@ -47,5 +56,7 @@ describe('<TodoList />', () => {
 
     it('should clear completed todos', () => {
         wrapper.find(Button).simulate('click', {});
+
+        expect(clearCompletedTodosSpy).toHaveBeenCalled();
     });
 })
